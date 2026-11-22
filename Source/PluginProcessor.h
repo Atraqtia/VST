@@ -17,7 +17,7 @@ public:
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return true; }
 
-    const juce::String getName() const override { return "Thicc Box"; }
+    const juce::String getName() const override { return "KOJI TADOKORO Thicc Box"; }
     bool acceptsMidi() const override { return false; }
     bool producesMidi() const override { return false; }
     double getTailLengthSeconds() const override { return 0.0; }
