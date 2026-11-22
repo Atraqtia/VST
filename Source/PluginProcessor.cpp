@@ -1,6 +1,6 @@
 #include "PluginProcessor.h"
 
-SausageProcessor::SausageProcessor()
+ThiccBoxProcessor::ThiccBoxProcessor()
     : AudioProcessor (BusesProperties()
                           .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
                           .withOutput ("Output", juce::AudioChannelSet::stereo(), true)),
@@ -10,7 +10,7 @@ SausageProcessor::SausageProcessor()
     mix     = apvts.getRawParameterValue ("mix");
 }
 
-juce::AudioProcessorValueTreeState::ParameterLayout SausageProcessor::createLayout()
+juce::AudioProcessorValueTreeState::ParameterLayout ThiccBoxProcessor::createLayout()
 {
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
     layout.add (std::make_unique<juce::AudioParameterFloat> (
@@ -22,14 +22,14 @@ juce::AudioProcessorValueTreeState::ParameterLayout SausageProcessor::createLayo
     return layout;
 }
 
-bool SausageProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool ThiccBoxProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
     const auto& in  = layouts.getMainInputChannelSet();
     const auto& out = layouts.getMainOutputChannelSet();
     return in == out && (in == juce::AudioChannelSet::mono() || in == juce::AudioChannelSet::stereo());
 }
 
-void SausageProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void ThiccBoxProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     juce::dsp::ProcessSpec spec { sampleRate,
                                   (juce::uint32) samplesPerBlock,
@@ -60,7 +60,7 @@ void SausageProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
     makeupSmoothed.setCurrentAndTargetValue (juce::Decibels::decibelsToGain (f * 6.0f));
 }
 
-void SausageProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer&)
+void ThiccBoxProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer&)
 {
     juce::ScopedNoDenormals noDenormals;
 
@@ -116,18 +116,18 @@ void SausageProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Mid
     mixer.mixWetSamples (ioBlock);
 }
 
-juce::AudioProcessorEditor* SausageProcessor::createEditor()
+juce::AudioProcessorEditor* ThiccBoxProcessor::createEditor()
 {
     return new juce::GenericAudioProcessorEditor (*this);
 }
 
-void SausageProcessor::getStateInformation (juce::MemoryBlock& destData)
+void ThiccBoxProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     if (auto xml = apvts.copyState().createXml())
         copyXmlToBinary (*xml, destData);
 }
 
-void SausageProcessor::setStateInformation (const void* data, int sizeInBytes)
+void ThiccBoxProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     if (auto xml = getXmlFromBinary (data, sizeInBytes))
         if (xml->hasTagName (apvts.state.getType()))
@@ -136,5 +136,5 @@ void SausageProcessor::setStateInformation (const void* data, int sizeInBytes)
 
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new SausageProcessor();
+    return new ThiccBoxProcessor();
 }

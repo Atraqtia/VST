@@ -1,31 +1,31 @@
 cmake_minimum_required(VERSION 3.22)
-project(MySausageFattener VERSION 0.1.0)
+project(ThiccBox VERSION 0.1.0)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(../JUCE JUCE)
 
-juce_add_plugin(MySausageFattener
-    COMPANY_NAME "Home"
-    PLUGIN_MANUFACTURER_CODE Home
-    PLUGIN_CODE Sfat
+juce_add_plugin(ThiccBox
+    COMPANY_NAME "KOJI TADOKORO"
+    PLUGIN_MANUFACTURER_CODE Ktdk
+    PLUGIN_CODE Thcc
     FORMATS VST3
-    PRODUCT_NAME "MySausageFattener"
+    PRODUCT_NAME "Thicc Box"
     IS_SYNTH FALSE
     NEEDS_MIDI_INPUT FALSE
     COPY_PLUGIN_AFTER_BUILD FALSE)
 
-target_sources(MySausageFattener PRIVATE
+target_sources(ThiccBox PRIVATE
     Source/PluginProcessor.cpp
     Source/PluginProcessor.h)
 
-target_compile_definitions(MySausageFattener PUBLIC
+target_compile_definitions(ThiccBox PUBLIC
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
     JUCE_VST3_CAN_REPLACE_VST2=0)
 
-target_link_libraries(MySausageFattener
+target_link_libraries(ThiccBox
     PRIVATE
         juce::juce_audio_utils
         juce::juce_dsp

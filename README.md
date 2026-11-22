@@ -1,4 +1,4 @@
-# MySausageFattener
+# Thicc Box
 
 JUCE で作った 2 ノブ(FATNESS / MIX)の VST3 サチュレーション+コンプ。
 

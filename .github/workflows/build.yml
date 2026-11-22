@@ -23,5 +23,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MySausageFattener-VST3-win64
-          path: build/MySausageFattener_artefacts/Release/VST3/
+          name: ThiccBox-VST3-win64
+          path: build/ThiccBox_artefacts/Release/VST3/

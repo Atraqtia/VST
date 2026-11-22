@@ -3,11 +3,11 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_dsp/juce_dsp.h>
 
-class SausageProcessor : public juce::AudioProcessor
+class ThiccBoxProcessor : public juce::AudioProcessor
 {
 public:
-    SausageProcessor();
-    ~SausageProcessor() override = default;
+    ThiccBoxProcessor();
+    ~ThiccBoxProcessor() override = default;
 
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override {}
@@ -17,7 +17,7 @@ public:
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return true; }
 
-    const juce::String getName() const override { return "MySausageFattener"; }
+    const juce::String getName() const override { return "Thicc Box"; }
     bool acceptsMidi() const override { return false; }
     bool producesMidi() const override { return false; }
     double getTailLengthSeconds() const override { return 0.0; }
@@ -49,5 +49,5 @@ private:
     std::atomic<float>* fatness = nullptr;
     std::atomic<float>* mix = nullptr;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SausageProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ThiccBoxProcessor)
 };
